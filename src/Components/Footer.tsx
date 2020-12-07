@@ -1,5 +1,5 @@
 import React from "react";
-import {Jumbotron, Button, Row, Col,Container} from 'react-bootstrap'
+import {Jumbotron, Button} from 'react-bootstrap'
 
 const Footer = () => {
   return (
@@ -7,11 +7,10 @@ const Footer = () => {
       <Jumbotron >
         <h1>Explore More Products</h1>
         <p>
-          This is a simple hero unit, a simple jumbotron-style component for
-          calling extra attention to featured content or information.
+          Visit the store to explore more products and get amazing discount on each one.
         </p>
         <p>
-          <Button variant="primary">Learn more</Button>
+          <Button variant="primary">Visit store</Button>
         </p>
       </Jumbotron>
      <div className='bg-dark p-3 text-light'>

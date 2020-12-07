@@ -6,6 +6,14 @@ const Categories = () => {
   const basket = useSelector((state: any) => state.basket);
   const newBasket = basket.slice(0, 4);
 
+  const getProduct = (product:any):any => {
+    console.log(product)
+    fetch('/cartitem', {
+      method: 'POST',
+      body: JSON.stringify(product)
+    })
+  }
+
   return (
     <div>
       <h1 className="text-center mt-5 mb-5">
@@ -17,13 +25,22 @@ const Categories = () => {
             return (
               <Col sm={6} md={4} className="mb-3" key={product.id}>
                 <Card>
-                  <Card.Img variant="top" height={200} style={{ backgroundPosition: 'contain'}} src={product.imgURL} />
+                  <Card.Img
+                    variant="top"
+                    height={140}
+                    style={{
+                      padding: "5px 5px",
+                      width: "140px",
+                      margin: "0 auto",
+                    }}
+                    src={product.imgURL}
+                  />
                   <Card.Body>
-                    <Card.Title>{product.title}</Card.Title>
-                    <Card.Text>
-                      {product.description.substring(0,30)}...
+                    <Card.Title style={{fontSize: '1rem', fontWeight: 'bold'}}>{product.title}</Card.Title>
+                    <Card.Text style={{fontSize: '0.8rem'}}>
+                      {product.description.substring(0, 30)}...
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    <Button variant="primary" onClick={()=>getProduct(product)}>Add to Cart</Button>
                   </Card.Body>
                 </Card>
               </Col>
