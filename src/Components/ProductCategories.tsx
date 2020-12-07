@@ -4,6 +4,13 @@ import { useSelector } from "react-redux";
 
 const ProductCategories = () => {
   const basket = useSelector((state: any) => state.basket);
+  const getProduct = (product:any):any => {
+    console.log(product)
+    fetch('/cartitem', {
+      method: 'POST',
+      body: JSON.stringify(product)
+    })
+  }
   return (
     <div>
       <h1 className="text-center mt-5 mb-5">
@@ -30,7 +37,7 @@ const ProductCategories = () => {
                     <Card.Text style={{fontSize: '0.8rem'}}>
                       {product.description.substring(0, 30)}...
                     </Card.Text>
-                    <Button variant="primary">Add to Cart</Button>
+                    <Button variant="primary" onClick={()=>getProduct(product)}>Add to Cart</Button>
                   </Card.Body>
                 </Card>
               </Col>
