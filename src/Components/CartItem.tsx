@@ -1,7 +1,10 @@
 import React from "react";
 import { Badge, Button, Media } from "react-bootstrap";
+import {useSelector} from 'react-redux'
 
 const CartItem = () => {
+  const basket = useSelector((state:any) => state.basket)
+  console.log(basket)
   return (
     <div>
       <h1 className="text-center mt-5 mb-5">
