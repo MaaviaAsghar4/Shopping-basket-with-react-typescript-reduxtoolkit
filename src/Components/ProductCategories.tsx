@@ -6,7 +6,7 @@ const ProductCategories = () => {
   const basket = useSelector((state: any) => state.basket);
   const getProduct = (product:any):any => {
     alert(`${product.title} added to the cart`)
-    fetch('/cartitem', {
+    fetch('/api/cartitem', {
       method: 'POST',
       body: JSON.stringify(product)
     })

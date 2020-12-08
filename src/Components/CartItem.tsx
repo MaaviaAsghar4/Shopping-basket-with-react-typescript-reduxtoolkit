@@ -7,7 +7,7 @@ const CartItem = () => {
   useEffect(() => {
     const fetchRoute = async () => {
       try {
-        const fetchItem = await fetch("http://localhost:3000/cartitem");
+        const fetchItem = await fetch("/api/cartitem");
         const fetchResponse = await fetchItem.json();
         console.log(fetchResponse);
         setGetState((state: any) => {
