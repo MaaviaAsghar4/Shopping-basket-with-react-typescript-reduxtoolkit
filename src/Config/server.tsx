@@ -1,17 +1,18 @@
 import { createServer } from "miragejs";
-
-const cartItem: any[] = [];
+import {productType} from '../types/type'
+const cartItem: productType[] = [];
 
 const Server = () => {
   createServer({
+
     routes() {
       this.namespace = "/api";
-      this.get("maaviasghar-shoppingbasket/cartitem", () => {
+      this.get("/cartitem", () => {
         return cartItem;
       });
 
-      this.post("maaviasghar-shoppingbasket/cartitem", (schema, req): any => {
-        let newItem = JSON.parse(req.requestBody);
+      this.post("/cartitem", (schema, req): any => {
+        let newItem:productType = JSON.parse(req.requestBody);
         cartItem.push(newItem);
         console.log(cartItem);
       });

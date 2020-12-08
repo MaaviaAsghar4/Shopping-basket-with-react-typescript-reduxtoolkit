@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Badge, Button, Media } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import {productType} from '../types/type'
 
 const CartItem = () => {
-  let [getState, setGetState] = useState<any>([]);
-
+  let [getState, setGetState] = useState<productType[]>([]);
+  const cart: productType[] = useSelector((state:any) => state.cart)
+  useEffect(()=>{
+    setGetState(cart)
+  },[cart])
   useEffect(() => {
     const fetchRoute = async () => {
       try {
-        const fetchItem = await fetch("maaviasghar-shoppingbasket/api/cartitem");
+        const fetchItem = await fetch("/api/cartitem");
         const fetchResponse = await fetchItem.json();
         console.log(fetchResponse);
-        setGetState((state: any) => {
+        setGetState((state: productType[]) => {
           return fetchResponse;
         });
       } catch (error) {
@@ -21,17 +26,17 @@ const CartItem = () => {
     fetchRoute();
   }, []);
 
-  const amount = getState.map((value: any) => {
+  const amount:number[] = getState.map((value: productType) => {
     return value.price;
   });
 
-  const total = amount.reduce(
-    (acc: any, initialValue: any) => (acc += initialValue),
+  const total:number = amount.reduce(
+    (acc: number, initialValue: number) => (acc += initialValue),
     0
   );
 
   const deleteProduct = (id:number) => {
-    setGetState(getState.filter((product: any)=> product.id !== id))
+    setGetState(getState.filter((product: productType)=> product.id !== id))
   }
 
 
@@ -47,7 +52,7 @@ const CartItem = () => {
       <h1 className="text-center mt-5 mb-5">
         <Badge variant="primary">Cart</Badge>
       </h1>
-      {getState?.map((product: any, index: number) => {
+      {getState?.map((product: productType, index: number) => {
         return (
           <Media className="ml-3 mb-3 mr-3 p-3 border" key={product.id}>
             <Media.Body>

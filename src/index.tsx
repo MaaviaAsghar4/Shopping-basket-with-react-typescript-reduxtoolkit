@@ -7,7 +7,9 @@ import { Provider } from "react-redux";
 import store from "./Store/index";
 import Server from './Config/server'
 
-Server()
+if (process.env.NODE_ENV === "development") {
+  Server()
+}
 
 ReactDOM.render(
   <React.StrictMode>
