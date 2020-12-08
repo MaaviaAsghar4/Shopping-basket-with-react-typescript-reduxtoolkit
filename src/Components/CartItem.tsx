@@ -9,22 +9,22 @@ const CartItem = () => {
   useEffect(()=>{
     setGetState(cart)
   },[cart])
-  useEffect(() => {
-    const fetchRoute = async () => {
-      try {
-        const fetchItem = await fetch("/api/cartitem");
-        const fetchResponse = await fetchItem.json();
-        console.log(fetchResponse);
-        setGetState((state: productType[]) => {
-          return fetchResponse;
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchRoute = async () => {
+  //     try {
+  //       const fetchItem = await fetch("/api/cartitem");
+  //       const fetchResponse = await fetchItem.json();
+  //       console.log(fetchResponse);
+  //       setGetState((state: productType[]) => {
+  //         return fetchResponse;
+  //       });
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-    fetchRoute();
-  }, []);
+  //   fetchRoute();
+  // }, []);
 
   const amount:number[] = getState.map((value: productType) => {
     return value.price;

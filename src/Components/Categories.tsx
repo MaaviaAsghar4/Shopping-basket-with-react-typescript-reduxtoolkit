@@ -12,10 +12,10 @@ const Categories = () => {
   const getProduct = (product:productType):void => {
     alert(`${product.title} added to the cart`)
     dispatch(addItem(product))
-    fetch('/api/cartitem', {
-      method: 'POST',
-      body: JSON.stringify(product)
-    })
+    // fetch('/api/cartitem', {
+    //   method: 'POST',
+    //   body: JSON.stringify(product)
+    // })
   }
 
   return (
