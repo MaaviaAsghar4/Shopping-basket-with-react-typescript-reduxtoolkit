@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Badge, Media } from "react-bootstrap";
+import { Badge, Button, Media } from "react-bootstrap";
 
 const CartItem = () => {
   let [getState, setGetState] = useState<any>([]);
@@ -30,6 +30,10 @@ const CartItem = () => {
     0
   );
 
+  const deleteProduct = (id:number) => {
+    setGetState(getState.filter((product: any)=> product.id !== id))
+  }
+
 
   if (!getState.length)
     return (
@@ -52,6 +56,7 @@ const CartItem = () => {
               </h5>
               <p style={{ fontSize: "0.9rem" }}>Rs. {product.price}</p>
               <p>{product.description}</p>
+              <Button onClick={()=>deleteProduct(product.id)}>Delete</Button>
             </Media.Body>
             <img
               width={100}
