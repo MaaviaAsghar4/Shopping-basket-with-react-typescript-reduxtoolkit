@@ -7,7 +7,7 @@ const Categories = () => {
   const newBasket = basket.slice(0, 4);
 
   const getProduct = (product:any):any => {
-    console.log(product)
+    alert(`${product.title} added to the cart`)
     fetch('/cartitem', {
       method: 'POST',
       body: JSON.stringify(product)

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const ProductCategories = () => {
   const basket = useSelector((state: any) => state.basket);
   const getProduct = (product:any):any => {
-    console.log(product)
+    alert(`${product.title} added to the cart`)
     fetch('/cartitem', {
       method: 'POST',
       body: JSON.stringify(product)
