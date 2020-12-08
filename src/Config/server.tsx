@@ -6,11 +6,11 @@ const Server = () => {
   createServer({
     routes() {
       this.namespace = "/api";
-      this.get("/cartitem", () => {
+      this.get("maaviasghar-shoppingbasket/cartitem", () => {
         return cartItem;
       });
 
-      this.post("/cartitem", (schema, req): any => {
+      this.post("maaviasghar-shoppingbasket/cartitem", (schema, req): any => {
         let newItem = JSON.parse(req.requestBody);
         cartItem.push(newItem);
         console.log(cartItem);
